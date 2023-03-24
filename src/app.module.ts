@@ -9,8 +9,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { ConfigModule } from '@nestjs/config';
 import { EglisesModule } from './eglises/eglises.module';
+import { Evironnement } from './environnement';
 
 dotenv.config();
+
+
 
 @Module({
   imports: [
@@ -19,11 +22,11 @@ dotenv.config();
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: Evironnement.DB_HOST,
+      port: Evironnement.DB_PORT,
+      username: Evironnement.DB_USERNAME,
+      password: Evironnement.DB_PASSWORD,
+      database: Evironnement.DB_NAME,
       entities: ["dist/**/*.entity{.ts,.js}"],
       // entities: [
       //   UserEntity,
