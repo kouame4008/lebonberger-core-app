@@ -31,7 +31,7 @@ dotenv.config();
       // entities: [
       //   UserEntity,
       // ],
-      synchronize: true,
+      synchronize: false,
     }),
     UsersModule, 
     AuthModule, EglisesModule
