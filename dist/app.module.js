@@ -16,6 +16,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const dotenv = require("dotenv");
 const config_1 = require("@nestjs/config");
 const eglises_module_1 = require("./eglises/eglises.module");
+const environnement_1 = require("./environnement");
 dotenv.config();
 let AppModule = class AppModule {
 };
@@ -27,13 +28,13 @@ AppModule = __decorate([
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mysql',
-                host: process.env.DB_HOST,
-                port: parseInt(process.env.DB_PORT),
-                username: process.env.DB_USERNAME,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME,
+                host: environnement_1.Evironnement.DB_HOST,
+                port: environnement_1.Evironnement.DB_PORT,
+                username: environnement_1.Evironnement.DB_USERNAME,
+                password: environnement_1.Evironnement.DB_PASSWORD,
+                database: environnement_1.Evironnement.DB_NAME,
                 entities: ["dist/**/*.entity{.ts,.js}"],
-                synchronize: true,
+                synchronize: false,
             }),
             users_module_1.UsersModule,
             auth_module_1.AuthModule, eglises_module_1.EglisesModule
